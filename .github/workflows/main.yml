@@ -32,11 +32,14 @@ jobs:
     - name: push _book to branch pages_branch
       env:
         TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        REF: github.com/ShiverZm/test_gitbook.git
+        REF: github.com/${{github.repository}}
         MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
-        MYNAME: ShiverZm         
+        MYNAME: ${{github.repository_owner}}         
       run: |
         cd _book
+        echo "token = ${TOKEN}"
+        echo "mymail = ${${MYEMAIL}}"
+        echo "myname = ${MYNAME}"
         git config --global user.email "${MYEMAIL}"
         git config --global user.name "${MYNAME}"
         git init
