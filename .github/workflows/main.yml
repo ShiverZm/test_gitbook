@@ -32,16 +32,15 @@ jobs:
     - name: push _book to branch pages_branch
       env:
         TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        REF: github.com/ShiverZm/test_gitbook
+        REF: github.com/ShiverZm/test_gitbook.git
         MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
         MYNAME: ShiverZm         
       run: |
         cd _book
         git config --global user.email "1113673178@qq.com"
-        git config --global user.name "ShiverZm"
         git init
         git remote add origin https://github.com/ShiverZm/test_gitbook.git
         git add . 
         git commit -m "Updated By Github Actions With Build For Github Pages"
         git branch -M pages_branch
-        git push --force --quiet "https://github.com/ShiverZm/test_gitbook.git" pages_branch:pages_branch
+        git push --force --quiet "https://${TOKEN}@${REF}" pages_branch:pages_branch
