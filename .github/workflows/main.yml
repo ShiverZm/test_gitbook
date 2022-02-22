@@ -37,7 +37,8 @@ jobs:
         MYNAME: ShiverZm         
       run: |
         cd _book
-        git config --global user.email "1113673178@qq.com"
+        git config --global user.email "${MYEMAIL}"
+        git config --global user.name "${MYNAME}"
         git init
         git remote add origin https://github.com/ShiverZm/test_gitbook.git
         git add . 
