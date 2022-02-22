@@ -31,7 +31,7 @@ jobs:
                 
     - name: push _book to branch pages_branch
       env:
-        TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TOKEN: ${{secrets.ACCESS_TOKEN}}
         REF: github.com/${{github.repository}}
         MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
         MYNAME: ${{github.repository_owner}}         
