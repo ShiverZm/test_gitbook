@@ -38,7 +38,7 @@ jobs:
       run: |
         cd _book
         echo "token = ${TOKEN}"
-        echo "mymail = ${${MYEMAIL}}"
+        echo "mymail = ${MYEMAIL}"
         echo "myname = ${MYNAME}"
         git config --global user.email "${MYEMAIL}"
         git config --global user.name "${MYNAME}"
