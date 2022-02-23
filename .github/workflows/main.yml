@@ -35,7 +35,7 @@ jobs:
         ACCESS_TOKEN: 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
         REPOSITORY_NAME: ShiverZm/test_gitbook
         BRANCH: pages_branch
-        FOLDER: public           
+        FOLDER: _book           
 #     - name: push _book to branch pages_branch
 #       env:
 #         TOKEN: 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
