@@ -43,7 +43,8 @@ jobs:
         git config --global user.email "${MYEMAIL}"
         git config --global user.name "${MYNAME}"
         git init
+        git remote add origin "https://x-access-token:${TOKEN}@${REF}.git"
         git add . 
         git commit -m "Updated By Github Actions With Build For Github Pages"
         git branch -M pages_branch
-        git push --force --quiet "https://${TOKEN}@${REF}" pages_branch:pages_branch
+        git push --force --quiet "https://${TOKEN}@${REF}.git" pages_branch:pages_branch
