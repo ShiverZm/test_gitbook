@@ -31,13 +31,13 @@ jobs:
                 
     - name: push _book to branch pages_branch
       env:
-        TOKEN: ${{secrets.ACCESS_TOKEN2}}
+        ACCESS_TOKEN2: ${{secrets.ACCESS_TOKEN2}}
         REF: github.com/${{github.repository}}
         MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
         MYNAME: ${{github.repository_owner}}         
       run: |
         cd _book
-        echo "token = ${TOKEN}"
+        echo "token = ${ACCESS_TOKEN2}"
         echo "mymail = ${MYEMAIL}"
         echo "myname = ${MYNAME}"
         git config --global user.email "${MYEMAIL}"
@@ -46,4 +46,4 @@ jobs:
         git add . 
         git commit -m "Updated By Github Actions With Build For Github Pages"
         git branch -M pages_branch
-        git push --force --quiet "https://${TOKEN}@${REF}" pages_branch:pages_branch
+        git push --force --quiet "https://${ACCESS_TOKEN2}@${REF}" pages_branch:pages_branch
