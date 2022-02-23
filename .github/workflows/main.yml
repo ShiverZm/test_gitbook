@@ -28,23 +28,30 @@ jobs:
         book sm
         gitbook build
         cp SUMMARY.md _book
-                
-    - name: push _book to branch pages_branch
-      env:
-        TOKEN: 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
-        REF: github.com/${{github.repository}}
-        MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
-        MYNAME: ${{github.repository_owner}}         
-      run: |
-        cd _book
-        echo "token = ${TOKEN}"
-        echo "mymail = ${MYEMAIL}"
-        echo "myname = ${MYNAME}"
-        git config --global user.email "${MYEMAIL}"
-        git config --global user.name "${MYNAME}"
-        git init
-        git remote add origin "https://x-access-token:${TOKEN}@${REF}.git"
-        git add . 
-        git commit -m "Updated By Github Actions With Build For Github Pages"
-        git branch -M pages_branch
-        git push --force --quiet "https://${TOKEN}@${REF}.git" pages_branch:pages_branch
+        
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        ACCESS_TOKEN: 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
+        REPOSITORY_NAME: ShiverZm/test_gitbook
+        BRANCH: pages_branch
+        FOLDER: public           
+#     - name: push _book to branch pages_branch
+#       env:
+#         TOKEN: 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
+#         REF: github.com/${{github.repository}}
+#         MYEMAIL: 1113673178@qq.com                  # ！！记得修改为自己github设置的邮箱
+#         MYNAME: ${{github.repository_owner}}         
+#       run: |
+#         cd _book
+#         echo "token = ${TOKEN}"
+#         echo "mymail = ${MYEMAIL}"
+#         echo "myname = ${MYNAME}"
+#         git config --global user.email "${MYEMAIL}"
+#         git config --global user.name "${MYNAME}"
+#         git init
+#         git remote add origin "https://x-access-token:${TOKEN}@${REF}.git"
+#         git add . 
+#         git commit -m "Updated By Github Actions With Build For Github Pages"
+#         git branch -M pages_branch
+#         git push --force --quiet "https://${TOKEN}@${REF}.git" pages_branch:pages_branch
